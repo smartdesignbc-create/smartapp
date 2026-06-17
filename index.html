@@ -6,314 +6,114 @@
 <title>Smart Design Gym Operations</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
-
   :root {
-    --navy: #0B1A2E;
-    --navy2: #102240;
-    --navy3: #152D55;
-    --card: #162038;
-    --border: #1E3160;
-    --green: #22C55E;
-    --orange: #F97316;
-    --red: #EF4444;
-    --blue: #3B82F6;
-    --gold: #EAB308;
-    --purple: #A855F7;
-    --text: #E2E8F0;
-    --muted: #94A3B8;
-    --white: #FFFFFF;
+    --navy: #0B1A2E; --navy2: #102240; --navy3: #152D55; --card: #162038;
+    --border: #1E3160; --green: #22C55E; --orange: #F97316; --red: #EF4444;
+    --blue: #3B82F6; --gold: #EAB308; --purple: #A855F7;
+    --text: #E2E8F0; --muted: #94A3B8; --white: #FFFFFF;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--navy);
-    color: var(--text);
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* ── SIDEBAR ── */
-  #sidebar {
-    width: 220px;
-    min-width: 220px;
-    background: var(--navy2);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
-  .logo {
-    padding: 20px 16px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .logo-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-  }
-  .logo-sub {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
+  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+  #sidebar { width: 220px; min-width: 220px; background: var(--navy2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
+  .logo { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); }
+  .logo-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.05em; line-height: 1.2; }
+  .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
   nav { padding: 8px 0; flex: 1; }
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 16px;
-    cursor: pointer;
-    font-size: 13px;
-    color: var(--muted);
-    border-left: 3px solid transparent;
-    transition: all 0.15s;
-    user-select: none;
-  }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; cursor: pointer; font-size: 13px; color: var(--muted); border-left: 3px solid transparent; transition: all 0.15s; user-select: none; }
   .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
   .nav-item.active { color: var(--white); background: rgba(59,130,246,0.12); border-left-color: var(--blue); }
   .nav-icon { font-size: 15px; width: 18px; text-align: center; }
-
-  /* ── MAIN ── */
-  #main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .topbar {
-    background: var(--navy2);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 56px;
-  }
-  .topbar-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
+  #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .topbar { background: var(--navy2); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+  .topbar-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.04em; }
   .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .badge {
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
+  .badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; }
   .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
   .badge-orange { background: rgba(249,115,22,0.15); color: var(--orange); }
   .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
   .badge-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
   .badge-gold { background: rgba(234,179,8,0.15); color: var(--gold); }
   .badge-purple { background: rgba(168,85,247,0.15); color: var(--purple); }
-
-  #content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 24px;
-  }
-
-  /* ── CARDS / GRID ── */
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px;
-    border-top: 3px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 60px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .stat-card.c-green { border-top-color: var(--green); }
-  .stat-card.c-gold  { border-top-color: var(--gold); }
-  .stat-card.c-blue  { border-top-color: var(--blue); }
-  .stat-card.c-orange{ border-top-color: var(--orange); }
-  .stat-card.c-purple{ border-top-color: var(--purple); }
-  .stat-card.c-red   { border-top-color: var(--red); }
-
-  /* Dashboard hero glow */
-  #page-dashboard::before {
-    content: '';
-    display: block;
-    height: 3px;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, var(--blue), var(--purple), var(--blue));
-    border-radius: 2px;
-    opacity: 0.7;
-  }
+  #content { flex: 1; overflow-y: auto; padding: 24px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; border-top: 3px solid var(--border); position: relative; overflow: hidden; }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 60px; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%); pointer-events: none; }
+  .stat-card.c-green { border-top-color: var(--green); } .stat-card.c-gold { border-top-color: var(--gold); }
+  .stat-card.c-blue { border-top-color: var(--blue); } .stat-card.c-orange { border-top-color: var(--orange); }
+  .stat-card.c-purple { border-top-color: var(--purple); } .stat-card.c-red { border-top-color: var(--red); }
+  #page-dashboard::before { content: ''; display: block; height: 3px; margin-bottom: 20px; background: linear-gradient(90deg, var(--blue), var(--purple), var(--blue)); border-radius: 2px; opacity: 0.7; }
   .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
   .stat-value { font-size: 28px; font-weight: 700; line-height: 1; }
   .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* ── TABLE ── */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card-title { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { text-align: left; padding: 8px 12px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; border-bottom: 1px solid var(--border); }
-  td { padding: 10px 12px; border-bottom: 1px solid rgba(30,49,96,0.5); }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(30,49,96,0.5); vertical-align: middle; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(255,255,255,0.02); }
-
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: opacity 0.15s;
-  }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; transition: opacity 0.15s; }
   .btn:hover { opacity: 0.85; }
   .btn-primary { background: var(--blue); color: #fff; }
   .btn-success { background: var(--green); color: #fff; }
   .btn-danger { background: var(--red); color: #fff; }
   .btn-ghost { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); }
   .btn-sm { padding: 4px 10px; font-size: 11px; }
-
-  /* ── FORM ── */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .form-group { display: flex; flex-direction: column; gap: 5px; }
   .form-group.full { grid-column: 1 / -1; }
   label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-  input, select, textarea {
-    background: var(--navy);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s;
-  }
+  input, select, textarea { background: var(--navy); border: 1px solid var(--border); color: var(--text); padding: 8px 10px; border-radius: 6px; font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.15s; }
   input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   textarea { resize: vertical; min-height: 70px; }
   select option { background: var(--navy2); }
-
-  /* ── PROGRESS BAR ── */
   .progress { background: rgba(255,255,255,0.08); border-radius: 4px; height: 6px; overflow: hidden; margin-top: 4px; }
   .progress-fill { height: 100%; border-radius: 4px; }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--navy2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    width: 90%;
-    max-width: 540px;
-    max-height: 85vh;
-    overflow-y: auto;
-  }
+  .modal { background: var(--navy2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; width: 90%; max-width: 540px; max-height: 85vh; overflow-y: auto; }
   .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
   .modal-title { font-size: 16px; font-weight: 700; }
   .modal-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
-
-  /* ── TABS ── */
-  .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
   .tab { padding: 8px 16px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
   .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
-
-  /* ── ALERT / PRIORITY ── */
   .alert { padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
   .alert-p1 { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #FCA5A5; }
   .alert-p2 { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3); color: #FDBA74; }
   .alert-p3 { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: #93C5FD; }
-
-  /* ── SCHEDULE GRID ── */
   .schedule-grid { display: grid; grid-template-columns: 80px repeat(7,1fr); gap: 2px; font-size: 11px; }
   .sch-header { text-align: center; padding: 6px; color: var(--muted); font-weight: 600; }
   .sch-time { padding: 6px 8px; color: var(--muted); font-size: 10px; text-align: right; }
   .sch-cell { background: rgba(255,255,255,0.02); border-radius: 4px; min-height: 36px; padding: 4px; }
   .sch-class { border-radius: 4px; padding: 3px 5px; font-size: 10px; font-weight: 600; margin-bottom: 2px; cursor: pointer; }
-
-  /* ── CHART BARS ── */
   .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 100px; }
   .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; }
-  .bar { width: 100%; border-radius: 4px 4px 0 0; transition: height 0.4s; }
+  .bar { width: 100%; border-radius: 4px 4px 0 0; }
   .bar-label { font-size: 9px; color: var(--muted); }
-
-  /* ── PAGE SECTIONS ── */
   .section { display: none; }
   .section.active { display: block; }
-
-  /* ── UTILS ── */
-  .flex { display: flex; }
-  .flex-between { display: flex; justify-content: space-between; align-items: center; }
-  .gap8 { gap: 8px; }
-  .mt12 { margin-top: 12px; }
-  .mb16 { margin-bottom: 16px; }
+  .flex { display: flex; } .flex-between { display: flex; justify-content: space-between; align-items: center; }
+  .gap8 { gap: 8px; } .mt12 { margin-top: 12px; } .mb16 { margin-bottom: 16px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--blue); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--blue); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: #fff; padding: 12px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; z-index: 9999; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  .toast.error { background: var(--red); }
+  .delete-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 4px; }
+  .delete-btn:hover { background: rgba(239,68,68,0.1); }
+  .empty-state { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; }
 </style>
 </head>
 <body>
 
-<!-- SIDEBAR -->
 <div id="sidebar">
   <div class="logo">
     <div class="logo-title">SMART DESIGN<br>GYM OPERATIONS</div>
     <div class="logo-sub">Management System v2.0</div>
   </div>
-  <nav id="nav">
+  <nav>
     <div class="nav-item active" data-page="dashboard"><span class="nav-icon">📊</span> Dashboard</div>
     <div class="nav-item" data-page="members"><span class="nav-icon">👥</span> Members</div>
     <div class="nav-item" data-page="memberships"><span class="nav-icon">🎫</span> Memberships</div>
@@ -332,30 +132,28 @@
   </nav>
 </div>
 
-<!-- MAIN -->
 <div id="main">
   <div class="topbar">
     <div class="topbar-title" id="page-title">Dashboard</div>
     <div class="topbar-right">
       <span style="font-size:12px;color:var(--muted)">Smart Design Gym</span>
-      <button class="btn btn-primary btn-sm" id="share-btn" onclick="openModal('modal-share')" style="gap:6px">🔗 Share Demo</button>
+      <button class="btn btn-primary btn-sm" id="share-btn" onclick="openModal('modal-share')">🔗 Share Demo</button>
       <div class="avatar">AD</div>
     </div>
   </div>
 
   <div id="content">
 
-    <!-- ══ DASHBOARD ══ -->
+    <!-- DASHBOARD -->
     <div class="section active" id="page-dashboard">
       <div class="stat-grid">
-        <div class="stat-card c-green"><div class="stat-label">Active Members</div><div class="stat-value" style="color:var(--green)">342</div><div class="stat-sub">↑ 12 this month</div></div>
+        <div class="stat-card c-green"><div class="stat-label">Active Members</div><div class="stat-value" id="dash-members" style="color:var(--green)">342</div><div class="stat-sub">↑ 12 this month</div></div>
         <div class="stat-card c-gold"><div class="stat-label">Monthly Revenue</div><div class="stat-value" style="color:var(--gold)">R84,200</div><div class="stat-sub">↑ 8% vs last month</div></div>
-        <div class="stat-card c-blue"><div class="stat-label">Check-ins Today</div><div class="stat-value" style="color:var(--blue)">87</div><div class="stat-sub">Peak: 09:00–10:00</div></div>
+        <div class="stat-card c-blue"><div class="stat-label">Check-ins Today</div><div class="stat-value" id="dash-checkins" style="color:var(--blue)">87</div><div class="stat-sub">Peak: 09:00–10:00</div></div>
         <div class="stat-card c-orange"><div class="stat-label">Expiring Soon</div><div class="stat-value" style="color:var(--orange)">24</div><div class="stat-sub">Within 7 days</div></div>
         <div class="stat-card c-purple"><div class="stat-label">Class Attendance</div><div class="stat-value" style="color:var(--purple)">91%</div><div class="stat-sub">Avg fill rate today</div></div>
         <div class="stat-card c-red"><div class="stat-label">Overdue Payments</div><div class="stat-value" style="color:var(--red)">11</div><div class="stat-sub">R6,450 outstanding</div></div>
       </div>
-
       <div class="two-col">
         <div class="card">
           <div class="card-title">Revenue — Last 7 Days</div>
@@ -371,88 +169,52 @@
         </div>
         <div class="card">
           <div class="card-title">Maintenance Alerts</div>
-          <div class="alert alert-p1">🔴 P1 — Treadmill #4 motor fault — Urgent</div>
-          <div class="alert alert-p2">🟠 P2 — Pool pump pressure low — Today</div>
-          <div class="alert alert-p3">🔵 P3 — Locker room light out — This week</div>
-          <div class="alert alert-p3">🔵 P3 — AC filter replacement due — This week</div>
+          <div id="dash-maintenance-alerts">
+            <div class="alert alert-p1">🔴 P1 — Treadmill #4 motor fault — Urgent</div>
+            <div class="alert alert-p2">🟠 P2 — Pool pump pressure low — Today</div>
+            <div class="alert alert-p3">🔵 P3 — Locker room light out — This week</div>
+          </div>
         </div>
       </div>
-
       <div class="two-col">
         <div class="card">
           <div class="card-title">Recent Check-ins</div>
-          <table>
-            <tr><th>Member</th><th>Time</th><th>Method</th></tr>
-            <tr><td><span class="avatar" style="background:var(--green)">JN</span> <span style="margin-left:8px">James Nkosi</span></td><td>09:42</td><td><span class="badge badge-blue">QR</span></td></tr>
-            <tr><td><span class="avatar" style="background:var(--purple)">SP</span> <span style="margin-left:8px">Sara Patel</span></td><td>09:38</td><td><span class="badge badge-green">Card</span></td></tr>
-            <tr><td><span class="avatar" style="background:var(--orange)">TM</span> <span style="margin-left:8px">Tebogo Molefe</span></td><td>09:31</td><td><span class="badge badge-blue">QR</span></td></tr>
-            <tr><td><span class="avatar" style="background:var(--red)">LV</span> <span style="margin-left:8px">Linda van der Berg</span></td><td>09:20</td><td><span class="badge badge-blue">QR</span></td></tr>
-          </table>
+          <table><thead><tr><th>Member</th><th>Time</th><th>Method</th></tr></thead>
+          <tbody id="dash-checkin-list">
+            <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--green)">JN</div>James Nkosi</div></td><td>09:42</td><td><span class="badge badge-blue">QR</span></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--purple)">SP</div>Sara Patel</div></td><td>09:38</td><td><span class="badge badge-green">Card</span></td></tr>
+          </tbody></table>
         </div>
         <div class="card">
           <div class="card-title">Class Capacity Today</div>
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div><div class="flex-between mb4" style="margin-bottom:4px"><span style="font-size:13px">Yoga 07:00</span><span style="font-size:12px;color:var(--green)">16/20</span></div><div class="progress"><div class="progress-fill" style="width:80%;background:var(--green)"></div></div></div>
-            <div><div class="flex-between mb4" style="margin-bottom:4px"><span style="font-size:13px">HIIT 08:00</span><span style="font-size:12px;color:var(--orange)">19/20</span></div><div class="progress"><div class="progress-fill" style="width:95%;background:var(--orange)"></div></div></div>
-            <div><div class="flex-between mb4" style="margin-bottom:4px"><span style="font-size:13px">Spinning 09:00</span><span style="font-size:12px;color:var(--green)">12/18</span></div><div class="progress"><div class="progress-fill" style="width:67%;background:var(--green)"></div></div></div>
-            <div><div class="flex-between mb4" style="margin-bottom:4px"><span style="font-size:13px">Boxing 10:00</span><span style="font-size:12px;color:var(--blue)">8/15</span></div><div class="progress"><div class="progress-fill" style="width:53%;background:var(--blue)"></div></div></div>
+            <div><div class="flex-between" style="margin-bottom:4px"><span style="font-size:13px">Yoga 07:00</span><span style="font-size:12px;color:var(--green)">16/20</span></div><div class="progress"><div class="progress-fill" style="width:80%;background:var(--green)"></div></div></div>
+            <div><div class="flex-between" style="margin-bottom:4px"><span style="font-size:13px">HIIT 08:00</span><span style="font-size:12px;color:var(--orange)">19/20</span></div><div class="progress"><div class="progress-fill" style="width:95%;background:var(--orange)"></div></div></div>
+            <div><div class="flex-between" style="margin-bottom:4px"><span style="font-size:13px">Spinning 09:00</span><span style="font-size:12px;color:var(--green)">12/18</span></div><div class="progress"><div class="progress-fill" style="width:67%;background:var(--green)"></div></div></div>
+            <div><div class="flex-between" style="margin-bottom:4px"><span style="font-size:13px">Boxing 10:00</span><span style="font-size:12px;color:var(--blue)">8/15</span></div><div class="progress"><div class="progress-fill" style="width:53%;background:var(--blue)"></div></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ══ MEMBERS ══ -->
+    <!-- MEMBERS -->
     <div class="section" id="page-members">
       <div class="flex-between mb16">
         <div class="flex gap8">
-          <input type="text" placeholder="Search members…" style="width:220px"/>
-          <select style="width:140px"><option>All Statuses</option><option>Active</option><option>Expired</option><option>Suspended</option></select>
+          <input type="text" id="member-search" placeholder="Search members…" style="width:220px" oninput="renderMembers()"/>
+          <select id="member-filter" style="width:140px" onchange="renderMembers()">
+            <option>All Statuses</option><option>Active</option><option>Expiring</option><option>Overdue</option><option>Suspended</option>
+          </select>
         </div>
         <button class="btn btn-primary" onclick="openModal('modal-add-member')">+ Add Member</button>
       </div>
       <div class="card" style="padding:0;overflow:hidden">
-        <table>
-          <tr><th>Member</th><th>ID</th><th>Membership</th><th>Status</th><th>Expiry</th><th>Contact</th><th>Actions</th></tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="background:var(--green)">JN</div>James Nkosi</div></td>
-            <td style="color:var(--muted)">#1042</td><td>Monthly</td>
-            <td><span class="badge badge-green">Active</span></td>
-            <td>30 Jun 2026</td><td>071 234 5678</td>
-            <td><button class="btn btn-ghost btn-sm">View</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="background:var(--purple)">SP</div>Sara Patel</div></td>
-            <td style="color:var(--muted)">#1041</td><td>Annual</td>
-            <td><span class="badge badge-green">Active</span></td>
-            <td>14 Jan 2027</td><td>082 345 6789</td>
-            <td><button class="btn btn-ghost btn-sm">View</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="background:var(--orange)">TM</div>Tebogo Molefe</div></td>
-            <td style="color:var(--muted)">#1038</td><td>Monthly</td>
-            <td><span class="badge badge-orange">Expiring</span></td>
-            <td>20 Jun 2026</td><td>063 456 7890</td>
-            <td><button class="btn btn-ghost btn-sm">View</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="background:var(--red)">LV</div>Linda van der Berg</div></td>
-            <td style="color:var(--muted)">#1031</td><td>Weekly</td>
-            <td><span class="badge badge-red">Overdue</span></td>
-            <td>05 Jun 2026</td><td>072 567 8901</td>
-            <td><button class="btn btn-ghost btn-sm">View</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="background:var(--blue)">KD</div>Kavya Dlamini</div></td>
-            <td style="color:var(--muted)">#1029</td><td>Corporate</td>
-            <td><span class="badge badge-green">Active</span></td>
-            <td>31 Dec 2026</td><td>084 678 9012</td>
-            <td><button class="btn btn-ghost btn-sm">View</button></td>
-          </tr>
-        </table>
+        <table><thead><tr><th>Member</th><th>ID</th><th>Membership</th><th>Status</th><th>Expiry</th><th>Contact</th><th></th></tr></thead>
+        <tbody id="members-tbody"></tbody></table>
       </div>
     </div>
 
-    <!-- ══ MEMBERSHIPS ══ -->
+    <!-- MEMBERSHIPS -->
     <div class="section" id="page-memberships">
       <div class="three-col" style="margin-bottom:20px">
         <div class="stat-card"><div class="stat-label">Daily</div><div class="stat-value" style="color:var(--blue)">8</div><div class="stat-sub">Active passes</div></div>
@@ -475,39 +237,33 @@
       </div>
     </div>
 
-    <!-- ══ ACCESS CONTROL ══ -->
+    <!-- ACCESS CONTROL -->
     <div class="section" id="page-access">
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-label">In Gym Now</div><div class="stat-value" style="color:var(--green)">34</div></div>
-        <div class="stat-card"><div class="stat-label">Total Today</div><div class="stat-value" style="color:var(--blue)">87</div></div>
+        <div class="stat-card"><div class="stat-label">In Gym Now</div><div class="stat-value" id="access-in-gym" style="color:var(--green)">34</div></div>
+        <div class="stat-card"><div class="stat-label">Total Today</div><div class="stat-value" id="access-total" style="color:var(--blue)">87</div></div>
         <div class="stat-card"><div class="stat-label">QR Scans</div><div class="stat-value" style="color:var(--purple)">61</div></div>
         <div class="stat-card"><div class="stat-label">Card Swipes</div><div class="stat-value" style="color:var(--gold)">26</div></div>
       </div>
       <div class="two-col">
         <div class="card">
           <div class="card-title">Live Entry Log</div>
-          <table>
-            <tr><th>Member</th><th>Entry</th><th>Exit</th><th>Method</th></tr>
-            <tr><td>James Nkosi</td><td>09:42</td><td>—</td><td><span class="badge badge-blue">QR</span></td></tr>
-            <tr><td>Sara Patel</td><td>09:38</td><td>—</td><td><span class="badge badge-green">Card</span></td></tr>
-            <tr><td>Tebogo Molefe</td><td>09:31</td><td>—</td><td><span class="badge badge-blue">QR</span></td></tr>
-            <tr><td>Kavya Dlamini</td><td>08:15</td><td>09:22</td><td><span class="badge badge-blue">QR</span></td></tr>
-            <tr><td>Mark Johnson</td><td>07:50</td><td>09:10</td><td><span class="badge badge-green">Card</span></td></tr>
-          </table>
+          <table><thead><tr><th>Member</th><th>Entry</th><th>Exit</th><th>Method</th></tr></thead>
+          <tbody id="checkin-tbody"></tbody></table>
         </div>
         <div class="card">
           <div class="card-title">Manual Check-In</div>
           <div class="form-row">
-            <div class="form-group full"><label>Member Name or ID</label><input type="text" placeholder="Search member…"/></div>
-            <div class="form-group"><label>Method</label><select><option>Manual</option><option>QR</option><option>Card</option></select></div>
-            <div class="form-group"><label>Direction</label><select><option>Entry</option><option>Exit</option></select></div>
+            <div class="form-group full"><label>Member Name</label><input type="text" id="checkin-name" placeholder="Enter member name…"/></div>
+            <div class="form-group"><label>Method</label><select id="checkin-method"><option>Manual</option><option>QR</option><option>Card</option></select></div>
+            <div class="form-group"><label>Direction</label><select id="checkin-direction"><option>Entry</option><option>Exit</option></select></div>
           </div>
-          <button class="btn btn-success" style="width:100%">✔ Record Check-in</button>
+          <button class="btn btn-success" style="width:100%" onclick="recordCheckin()">✔ Record Check-in</button>
         </div>
       </div>
     </div>
 
-    <!-- ══ PAYMENTS ══ -->
+    <!-- PAYMENTS -->
     <div class="section" id="page-payments">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Today's Collections</div><div class="stat-value" style="color:var(--gold)">R4,820</div></div>
@@ -516,26 +272,19 @@
         <div class="stat-card"><div class="stat-label">Receipts Sent</div><div class="stat-value" style="color:var(--green)">14</div></div>
       </div>
       <div class="card">
-        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Payment Records</div><button class="btn btn-primary btn-sm">+ Record Payment</button></div>
-        <table>
-          <tr><th>Member</th><th>Type</th><th>Amount</th><th>Date</th><th>Status</th><th>Ref</th></tr>
-          <tr><td>Sara Patel</td><td>Membership</td><td style="color:var(--gold)">R650</td><td>14 Jun 2026</td><td><span class="badge badge-green">Paid</span></td><td style="color:var(--muted)">#INV-2284</td></tr>
-          <tr><td>James Nkosi</td><td>Membership</td><td style="color:var(--gold)">R650</td><td>12 Jun 2026</td><td><span class="badge badge-green">Paid</span></td><td style="color:var(--muted)">#INV-2283</td></tr>
-          <tr><td>Tebogo Molefe</td><td>PT Session</td><td style="color:var(--gold)">R350</td><td>10 Jun 2026</td><td><span class="badge badge-green">Paid</span></td><td style="color:var(--muted)">#INV-2280</td></tr>
-          <tr><td>Linda van der Berg</td><td>Membership</td><td style="color:var(--gold)">R350</td><td>05 Jun 2026</td><td><span class="badge badge-red">Overdue</span></td><td style="color:var(--muted)">#INV-2271</td></tr>
-          <tr><td>Mark Johnson</td><td>Retail</td><td style="color:var(--gold)">R220</td><td>04 Jun 2026</td><td><span class="badge badge-green">Paid</span></td><td style="color:var(--muted)">#INV-2268</td></tr>
-        </table>
+        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Payment Records</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-payment')">+ Record Payment</button></div>
+        <table><thead><tr><th>Member</th><th>Type</th><th>Amount</th><th>Date</th><th>Status</th><th>Ref</th><th></th></tr></thead>
+        <tbody id="payments-tbody"></tbody></table>
       </div>
     </div>
 
-    <!-- ══ CLASSES ══ -->
+    <!-- CLASSES -->
     <div class="section" id="page-classes">
       <div class="tabs">
         <div class="tab active" onclick="switchTab(this,'tab-schedule')">Schedule</div>
         <div class="tab" onclick="switchTab(this,'tab-classes-list')">All Classes</div>
         <div class="tab" onclick="switchTab(this,'tab-bookings')">Bookings</div>
       </div>
-
       <div id="tab-schedule">
         <div class="card" style="overflow-x:auto">
           <div class="card-title">Weekly Class Schedule</div>
@@ -543,15 +292,11 @@
             <div class="sch-header"></div>
             <div class="sch-header">Mon</div><div class="sch-header">Tue</div><div class="sch-header">Wed</div>
             <div class="sch-header">Thu</div><div class="sch-header">Fri</div><div class="sch-header">Sat</div><div class="sch-header">Sun</div>
-
             <div class="sch-time">07:00</div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(168,85,247,0.2);color:var(--purple)">Yoga · 16/20</div></div>
-            <div class="sch-cell"></div>
-            <div class="sch-cell"><div class="sch-class" style="background:rgba(168,85,247,0.2);color:var(--purple)">Yoga · 14/20</div></div>
-            <div class="sch-cell"></div>
-            <div class="sch-cell"><div class="sch-class" style="background:rgba(168,85,247,0.2);color:var(--purple)">Yoga · 18/20</div></div>
+            <div class="sch-cell"></div><div class="sch-cell"><div class="sch-class" style="background:rgba(168,85,247,0.2);color:var(--purple)">Yoga · 14/20</div></div>
+            <div class="sch-cell"></div><div class="sch-cell"><div class="sch-class" style="background:rgba(168,85,247,0.2);color:var(--purple)">Yoga · 18/20</div></div>
             <div class="sch-cell"></div><div class="sch-cell"></div>
-
             <div class="sch-time">08:00</div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(239,68,68,0.2);color:var(--red)">HIIT · 19/20</div></div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(239,68,68,0.2);color:var(--red)">HIIT · 15/20</div></div>
@@ -559,7 +304,6 @@
             <div class="sch-cell"><div class="sch-class" style="background:rgba(239,68,68,0.2);color:var(--red)">HIIT · 20/20</div></div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(239,68,68,0.2);color:var(--red)">HIIT · 12/20</div></div>
             <div class="sch-cell"></div><div class="sch-cell"></div>
-
             <div class="sch-time">09:00</div>
             <div class="sch-cell"></div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(59,130,246,0.2);color:var(--blue)">Spinning · 12/18</div></div>
@@ -568,7 +312,6 @@
             <div class="sch-cell"><div class="sch-class" style="background:rgba(59,130,246,0.2);color:var(--blue)">Spinning · 18/18</div></div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(59,130,246,0.2);color:var(--blue)">Spinning · 10/18</div></div>
             <div class="sch-cell"></div>
-
             <div class="sch-time">10:00</div>
             <div class="sch-cell"><div class="sch-class" style="background:rgba(234,179,8,0.2);color:var(--gold)">Boxing · 8/15</div></div>
             <div class="sch-cell"></div>
@@ -580,51 +323,35 @@
           </div>
         </div>
       </div>
-
       <div id="tab-classes-list" style="display:none">
         <div class="card">
-          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Class Types</div><button class="btn btn-primary btn-sm">+ Add Class</button></div>
-          <table>
-            <tr><th>Class</th><th>Trainer</th><th>Capacity</th><th>Duration</th><th>Fee</th></tr>
-            <tr><td>Yoga</td><td>Priya Singh</td><td>20</td><td>60 min</td><td style="color:var(--gold)">R120</td></tr>
-            <tr><td>HIIT</td><td>Marcus Dube</td><td>20</td><td>45 min</td><td style="color:var(--gold)">R100</td></tr>
-            <tr><td>Spinning</td><td>Fatima Moosa</td><td>18</td><td>50 min</td><td style="color:var(--gold)">R110</td></tr>
-            <tr><td>Boxing</td><td>Jake Botha</td><td>15</td><td>60 min</td><td style="color:var(--gold)">R130</td></tr>
-          </table>
+          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Class Types</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-class')">+ Add Class</button></div>
+          <table><thead><tr><th>Class</th><th>Trainer</th><th>Capacity</th><th>Duration</th><th>Fee</th><th></th></tr></thead>
+          <tbody id="classes-tbody"></tbody></table>
         </div>
       </div>
-
       <div id="tab-bookings" style="display:none">
         <div class="card">
-          <div class="card-title">Recent Bookings</div>
-          <table>
-            <tr><th>Member</th><th>Class</th><th>Date</th><th>Status</th></tr>
-            <tr><td>James Nkosi</td><td>HIIT 08:00</td><td>16 Jun 2026</td><td><span class="badge badge-green">Confirmed</span></td></tr>
-            <tr><td>Sara Patel</td><td>Yoga 07:00</td><td>16 Jun 2026</td><td><span class="badge badge-green">Confirmed</span></td></tr>
-            <tr><td>Kavya Dlamini</td><td>Boxing 10:00</td><td>17 Jun 2026</td><td><span class="badge badge-blue">Pending</span></td></tr>
-            <tr><td>Tebogo Molefe</td><td>Spinning 09:00</td><td>17 Jun 2026</td><td><span class="badge badge-green">Confirmed</span></td></tr>
-          </table>
+          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Bookings</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-booking')">+ Add Booking</button></div>
+          <table><thead><tr><th>Member</th><th>Class</th><th>Date</th><th>Status</th><th></th></tr></thead>
+          <tbody id="bookings-tbody"></tbody></table>
         </div>
       </div>
     </div>
 
-    <!-- ══ PERSONAL TRAINING ══ -->
+    <!-- PERSONAL TRAINING -->
     <div class="section" id="page-pt">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Active PT Clients</div><div class="stat-value" style="color:var(--green)">38</div></div>
-        <div class="stat-card"><div class="stat-label">Sessions This Week</div><div class="stat-value" style="color:var(--blue)">64</div></div>
+        <div class="stat-card"><div class="stat-label">Sessions This Week</div><div class="stat-value" id="pt-sessions-count" style="color:var(--blue)">64</div></div>
         <div class="stat-card"><div class="stat-label">PT Revenue (Month)</div><div class="stat-value" style="color:var(--gold)">R22,400</div></div>
         <div class="stat-card"><div class="stat-label">Active Trainers</div><div class="stat-value" style="color:var(--purple)">6</div></div>
       </div>
       <div class="two-col">
         <div class="card">
-          <div class="card-title">PT Sessions</div>
-          <table>
-            <tr><th>Client</th><th>Trainer</th><th>Next Session</th><th>Progress</th></tr>
-            <tr><td>James Nkosi</td><td>Marcus Dube</td><td>17 Jun 09:00</td><td><span class="badge badge-green">On track</span></td></tr>
-            <tr><td>Linda van der Berg</td><td>Jake Botha</td><td>18 Jun 07:00</td><td><span class="badge badge-orange">Review</span></td></tr>
-            <tr><td>Kavya Dlamini</td><td>Priya Singh</td><td>17 Jun 10:00</td><td><span class="badge badge-green">On track</span></td></tr>
-          </table>
+          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">PT Sessions</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-pt')">+ Add Session</button></div>
+          <table><thead><tr><th>Client</th><th>Trainer</th><th>Next Session</th><th>Notes</th><th></th></tr></thead>
+          <tbody id="pt-tbody"></tbody></table>
         </div>
         <div class="card">
           <div class="card-title">Trainer Allocation</div>
@@ -639,51 +366,37 @@
       </div>
     </div>
 
-    <!-- ══ EQUIPMENT ══ -->
+    <!-- EQUIPMENT -->
     <div class="section" id="page-equipment">
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-label">Total Items</div><div class="stat-value" style="color:var(--blue)">124</div></div>
-        <div class="stat-card"><div class="stat-label">Operational</div><div class="stat-value" style="color:var(--green)">111</div></div>
-        <div class="stat-card"><div class="stat-label">Under Repair</div><div class="stat-value" style="color:var(--orange)">8</div></div>
-        <div class="stat-card"><div class="stat-label">Out of Service</div><div class="stat-value" style="color:var(--red)">5</div></div>
+        <div class="stat-card"><div class="stat-label">Total Items</div><div class="stat-value" id="eq-total" style="color:var(--blue)">124</div></div>
+        <div class="stat-card"><div class="stat-label">Operational</div><div class="stat-value" id="eq-operational" style="color:var(--green)">111</div></div>
+        <div class="stat-card"><div class="stat-label">Under Repair</div><div class="stat-value" id="eq-repair" style="color:var(--orange)">8</div></div>
+        <div class="stat-card"><div class="stat-label">Out of Service</div><div class="stat-value" id="eq-out" style="color:var(--red)">5</div></div>
       </div>
       <div class="card">
-        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Equipment Register</div><button class="btn btn-primary btn-sm">+ Add Equipment</button></div>
-        <table>
-          <tr><th>Item</th><th>Category</th><th>Location</th><th>Condition</th><th>Last Service</th><th>Status</th></tr>
-          <tr><td>Treadmill #1</td><td>Machine</td><td>Cardio Zone</td><td>Good</td><td>Mar 2026</td><td><span class="badge badge-green">Operational</span></td></tr>
-          <tr><td>Treadmill #4</td><td>Machine</td><td>Cardio Zone</td><td>Poor</td><td>Jan 2026</td><td><span class="badge badge-red">Fault</span></td></tr>
-          <tr><td>Dumbbells 5–50kg</td><td>Free Weights</td><td>Weights Floor</td><td>Good</td><td>May 2026</td><td><span class="badge badge-green">Operational</span></td></tr>
-          <tr><td>Rowing Machine #2</td><td>Machine</td><td>Cardio Zone</td><td>Fair</td><td>Feb 2026</td><td><span class="badge badge-orange">Repair</span></td></tr>
-          <tr><td>Barbell Set</td><td>Free Weights</td><td>Power Rack</td><td>Good</td><td>Apr 2026</td><td><span class="badge badge-green">Operational</span></td></tr>
-          <tr><td>Spin Bike #3</td><td>Machine</td><td>Spin Studio</td><td>Fair</td><td>Mar 2026</td><td><span class="badge badge-orange">Repair</span></td></tr>
-        </table>
+        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Equipment Register</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-equipment')">+ Add Equipment</button></div>
+        <table><thead><tr><th>Item</th><th>Category</th><th>Location</th><th>Condition</th><th>Last Service</th><th>Status</th><th></th></tr></thead>
+        <tbody id="equipment-tbody"></tbody></table>
       </div>
     </div>
 
-    <!-- ══ MAINTENANCE ══ -->
+    <!-- MAINTENANCE -->
     <div class="section" id="page-maintenance">
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-label">P1 Critical</div><div class="stat-value" style="color:var(--red)">2</div></div>
-        <div class="stat-card"><div class="stat-label">P2 Moderate</div><div class="stat-value" style="color:var(--orange)">5</div></div>
-        <div class="stat-card"><div class="stat-label">P3 Low</div><div class="stat-value" style="color:var(--blue)">8</div></div>
+        <div class="stat-card"><div class="stat-label">P1 Critical</div><div class="stat-value" id="maint-p1" style="color:var(--red)">2</div></div>
+        <div class="stat-card"><div class="stat-label">P2 Moderate</div><div class="stat-value" id="maint-p2" style="color:var(--orange)">5</div></div>
+        <div class="stat-card"><div class="stat-label">P3 Low</div><div class="stat-value" id="maint-p3" style="color:var(--blue)">8</div></div>
         <div class="stat-card"><div class="stat-label">Resolved (Month)</div><div class="stat-value" style="color:var(--green)">21</div></div>
       </div>
       <div class="card">
         <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Maintenance Log</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-maintenance')">+ Log Issue</button></div>
-        <table>
-          <tr><th>Issue</th><th>Priority</th><th>Location</th><th>Logged</th><th>Status</th><th>Assigned To</th></tr>
-          <tr><td>Treadmill #4 motor fault</td><td><span class="badge badge-red">P1</span></td><td>Cardio Zone</td><td>15 Jun</td><td><span class="badge badge-orange">In Progress</span></td><td>Tech Team</td></tr>
-          <tr><td>Pool pump pressure low</td><td><span class="badge badge-red">P1</span></td><td>Pool Area</td><td>16 Jun</td><td><span class="badge badge-red">Open</span></td><td>Unassigned</td></tr>
-          <tr><td>Rowing machine chain slip</td><td><span class="badge badge-orange">P2</span></td><td>Cardio Zone</td><td>12 Jun</td><td><span class="badge badge-orange">In Progress</span></td><td>Tech Team</td></tr>
-          <tr><td>Locker 24 lock broken</td><td><span class="badge badge-orange">P2</span></td><td>Change Rooms</td><td>11 Jun</td><td><span class="badge badge-blue">Scheduled</span></td><td>Maintenance</td></tr>
-          <tr><td>Locker room light out</td><td><span class="badge badge-blue">P3</span></td><td>Change Rooms</td><td>14 Jun</td><td><span class="badge badge-blue">Scheduled</span></td><td>Maintenance</td></tr>
-          <tr><td>AC filter replacement</td><td><span class="badge badge-blue">P3</span></td><td>Main Floor</td><td>10 Jun</td><td><span class="badge badge-blue">Scheduled</span></td><td>Facilities</td></tr>
-        </table>
+        <table><thead><tr><th>Issue</th><th>Priority</th><th>Location</th><th>Logged</th><th>Status</th><th>Assigned To</th><th></th></tr></thead>
+        <tbody id="maintenance-tbody"></tbody></table>
       </div>
     </div>
 
-    <!-- ══ STAFF ══ -->
+    <!-- STAFF -->
     <div class="section" id="page-staff">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Trainers</div><div class="stat-value" style="color:var(--blue)">6</div></div>
@@ -692,19 +405,13 @@
         <div class="stat-card"><div class="stat-label">Security</div><div class="stat-value" style="color:var(--orange)">2</div></div>
       </div>
       <div class="card">
-        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Staff Directory</div><button class="btn btn-primary btn-sm">+ Add Staff</button></div>
-        <table>
-          <tr><th>Name</th><th>Role</th><th>Department</th><th>Contact</th><th>Shift</th><th>Status</th></tr>
-          <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--blue);width:28px;height:28px;font-size:10px">MD</div>Marcus Dube</div></td><td>Head Trainer</td><td>Training</td><td>071 111 2222</td><td>06:00–14:00</td><td><span class="badge badge-green">Active</span></td></tr>
-          <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--purple);width:28px;height:28px;font-size:10px">PS</div>Priya Singh</div></td><td>Trainer</td><td>Training</td><td>082 222 3333</td><td>07:00–15:00</td><td><span class="badge badge-green">Active</span></td></tr>
-          <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--gold);width:28px;height:28px;font-size:10px">JB</div>Jake Botha</div></td><td>Trainer</td><td>Training</td><td>083 333 4444</td><td>08:00–16:00</td><td><span class="badge badge-green">Active</span></td></tr>
-          <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--green);width:28px;height:28px;font-size:10px">AM</div>Amina Mohamed</div></td><td>Admin</td><td>Admin</td><td>084 444 5555</td><td>08:00–17:00</td><td><span class="badge badge-green">Active</span></td></tr>
-          <tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="background:var(--orange);width:28px;height:28px;font-size:10px">KZ</div>Khaya Zulu</div></td><td>Security</td><td>Security</td><td>071 555 6666</td><td>05:00–13:00</td><td><span class="badge badge-green">Active</span></td></tr>
-        </table>
+        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Staff Directory</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-staff')">+ Add Staff</button></div>
+        <table><thead><tr><th>Name</th><th>Role</th><th>Department</th><th>Contact</th><th>Shift</th><th>Status</th><th></th></tr></thead>
+        <tbody id="staff-tbody"></tbody></table>
       </div>
     </div>
 
-    <!-- ══ SALES ══ -->
+    <!-- SALES -->
     <div class="section" id="page-sales">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Today's Sales</div><div class="stat-value" style="color:var(--gold)">R1,840</div></div>
@@ -714,31 +421,19 @@
       </div>
       <div class="two-col">
         <div class="card">
-          <div class="card-title">Product Catalogue</div>
-          <table>
-            <tr><th>Product</th><th>Price</th><th>Stock</th></tr>
-            <tr><td>Protein Shake</td><td style="color:var(--gold)">R65</td><td>42</td></tr>
-            <tr><td>Energy Bar</td><td style="color:var(--gold)">R35</td><td>80</td></tr>
-            <tr><td>Water Bottle (branded)</td><td style="color:var(--gold)">R120</td><td>18</td></tr>
-            <tr><td>Gym Gloves</td><td style="color:var(--gold)">R180</td><td>9</td></tr>
-            <tr><td>Resistance Band Set</td><td style="color:var(--gold)">R220</td><td>14</td></tr>
-            <tr><td>Foam Roller</td><td style="color:var(--gold)">R150</td><td>11</td></tr>
-          </table>
+          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Product Catalogue</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-product')">+ Add Product</button></div>
+          <table><thead><tr><th>Product</th><th>Price</th><th>Stock</th><th></th></tr></thead>
+          <tbody id="products-tbody"></tbody></table>
         </div>
         <div class="card">
-          <div class="card-title">Recent Transactions</div>
-          <table>
-            <tr><th>Member</th><th>Item</th><th>Amount</th><th>Time</th></tr>
-            <tr><td>James Nkosi</td><td>Protein Shake</td><td style="color:var(--gold)">R65</td><td>09:45</td></tr>
-            <tr><td>Sara Patel</td><td>Water Bottle</td><td style="color:var(--gold)">R120</td><td>09:40</td></tr>
-            <tr><td>Kavya Dlamini</td><td>Energy Bar ×2</td><td style="color:var(--gold)">R70</td><td>08:20</td></tr>
-            <tr><td>Walk-in</td><td>Foam Roller</td><td style="color:var(--gold)">R150</td><td>08:05</td></tr>
-          </table>
+          <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Recent Transactions</div><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-sale')">+ Record Sale</button></div>
+          <table><thead><tr><th>Member</th><th>Item</th><th>Amount</th><th>Time</th><th></th></tr></thead>
+          <tbody id="sales-tbody"></tbody></table>
         </div>
       </div>
     </div>
 
-    <!-- ══ REPORTS ══ -->
+    <!-- REPORTS -->
     <div class="section" id="page-reports">
       <div class="two-col" style="margin-bottom:20px">
         <div class="card">
@@ -788,7 +483,7 @@
       </div>
     </div>
 
-    <!-- ══ ANALYTICS ══ -->
+    <!-- ANALYTICS -->
     <div class="section" id="page-analytics">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Member Growth (YTD)</div><div class="stat-value" style="color:var(--purple)">+18%</div></div>
@@ -820,7 +515,7 @@
       </div>
     </div>
 
-    <!-- ══ ARCHIVE ══ -->
+    <!-- ARCHIVE -->
     <div class="section" id="page-archive">
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Archived Members</div><div class="stat-value" style="color:var(--muted)">218</div></div>
@@ -829,10 +524,7 @@
         <div class="stat-card"><div class="stat-label">Storage Used</div><div class="stat-value" style="color:var(--blue)">2.4 GB</div></div>
       </div>
       <div class="card">
-        <div class="flex-between mb16">
-          <div class="card-title" style="margin-bottom:0">Archive — Inactive Members</div>
-          <input type="text" placeholder="Search archive…" style="width:200px"/>
-        </div>
+        <div class="flex-between mb16"><div class="card-title" style="margin-bottom:0">Archive — Inactive Members</div><input type="text" placeholder="Search archive…" style="width:200px"/></div>
         <table>
           <tr><th>Member</th><th>ID</th><th>Last Active</th><th>Reason</th><th>Actions</th></tr>
           <tr><td>Peter Steyn</td><td>#0821</td><td>Feb 2026</td><td>Cancelled</td><td><button class="btn btn-ghost btn-sm">Restore</button></td></tr>
@@ -842,38 +534,38 @@
       </div>
     </div>
 
-    <!-- ══ SETTINGS ══ -->
+    <!-- SETTINGS -->
     <div class="section" id="page-settings">
       <div class="two-col">
         <div class="card">
           <div class="card-title">Gym Profile</div>
           <div class="form-row">
-            <div class="form-group full"><label>Gym Name</label><input type="text" value="Smart Design Gym"/></div>
-            <div class="form-group full"><label>Address</label><input type="text" value="123 Fitness Blvd, Johannesburg"/></div>
-            <div class="form-group"><label>Phone</label><input type="text" value="011 234 5678"/></div>
-            <div class="form-group"><label>Email</label><input type="text" value="admin@smartdesigngym.co.za"/></div>
-            <div class="form-group"><label>Opening Time</label><input type="time" value="05:00"/></div>
-            <div class="form-group"><label>Closing Time</label><input type="time" value="22:00"/></div>
+            <div class="form-group full"><label>Gym Name</label><input type="text" id="set-gym-name" value="Smart Design Gym"/></div>
+            <div class="form-group full"><label>Address</label><input type="text" id="set-address" value="123 Fitness Blvd, Johannesburg"/></div>
+            <div class="form-group"><label>Phone</label><input type="text" id="set-phone" value="011 234 5678"/></div>
+            <div class="form-group"><label>Email</label><input type="text" id="set-email" value="admin@smartdesigngym.co.za"/></div>
+            <div class="form-group"><label>Opening Time</label><input type="time" id="set-open" value="05:00"/></div>
+            <div class="form-group"><label>Closing Time</label><input type="time" id="set-close" value="22:00"/></div>
           </div>
-          <button class="btn btn-primary">Save Profile</button>
+          <button class="btn btn-primary" onclick="saveSettings()">Save Profile</button>
         </div>
         <div class="card">
           <div class="card-title">System Settings</div>
           <div class="form-row">
-            <div class="form-group full"><label>Currency</label><select><option>ZAR (R)</option><option>USD ($)</option><option>EUR (€)</option></select></div>
-            <div class="form-group full"><label>Default Membership Type</label><select><option>Monthly</option><option>Annual</option><option>Weekly</option></select></div>
-            <div class="form-group full"><label>Payment Grace Period (days)</label><input type="number" value="7"/></div>
-            <div class="form-group full"><label>Expiry Warning (days before)</label><input type="number" value="7"/></div>
+            <div class="form-group full"><label>Currency</label><select id="set-currency"><option>ZAR (R)</option><option>USD ($)</option><option>EUR (€)</option></select></div>
+            <div class="form-group full"><label>Default Membership Type</label><select id="set-membership"><option>Monthly</option><option>Annual</option><option>Weekly</option></select></div>
+            <div class="form-group full"><label>Payment Grace Period (days)</label><input type="number" id="set-grace" value="7"/></div>
+            <div class="form-group full"><label>Expiry Warning (days before)</label><input type="number" id="set-warning" value="7"/></div>
           </div>
-          <button class="btn btn-primary">Save Settings</button>
+          <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
         </div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+  </div>
+</div>
 
-<!-- ══ CLIENT VIEW BANNER ══ -->
+<!-- CLIENT BANNER -->
 <div id="client-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(90deg,#0B1A2E,#152D55);border-bottom:2px solid var(--blue);padding:10px 24px;align-items:center;justify-content:space-between">
   <div style="display:flex;align-items:center;gap:12px">
     <span style="font-size:18px">🔒</span>
@@ -888,94 +580,211 @@
   </div>
 </div>
 
-<!-- ══ MODALS ══ -->
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
-<!-- Add Member Modal -->
+<!-- MODALS -->
+
+<!-- Add Member -->
 <div class="modal-overlay" id="modal-add-member">
   <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">Add New Member</div>
-      <button class="modal-close" onclick="closeModal('modal-add-member')">✕</button>
-    </div>
+    <div class="modal-header"><div class="modal-title">Add New Member</div><button class="modal-close" onclick="closeModal('modal-add-member')">✕</button></div>
     <div class="form-row">
-      <div class="form-group"><label>First Name</label><input type="text" placeholder="First name"/></div>
-      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Last name"/></div>
-      <div class="form-group"><label>ID Number</label><input type="text" placeholder="SA ID or Passport"/></div>
-      <div class="form-group"><label>Date of Birth</label><input type="date"/></div>
-      <div class="form-group"><label>Phone</label><input type="text" placeholder="07x xxx xxxx"/></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="email@example.com"/></div>
-      <div class="form-group"><label>Membership Type</label>
-        <select><option>Monthly</option><option>Annual</option><option>Weekly</option><option>Daily</option><option>Corporate</option></select>
-      </div>
-      <div class="form-group"><label>Start Date</label><input type="date"/></div>
-      <div class="form-group full"><label>Medical Notes</label><textarea placeholder="Any relevant medical information…"></textarea></div>
+      <div class="form-group"><label>First Name</label><input type="text" id="m-first" placeholder="First name"/></div>
+      <div class="form-group"><label>Last Name</label><input type="text" id="m-last" placeholder="Last name"/></div>
+      <div class="form-group"><label>Phone</label><input type="text" id="m-phone" placeholder="07x xxx xxxx"/></div>
+      <div class="form-group"><label>Email</label><input type="email" id="m-email" placeholder="email@example.com"/></div>
+      <div class="form-group"><label>Membership Type</label><select id="m-type"><option>Monthly</option><option>Annual</option><option>Weekly</option><option>Daily</option><option>Corporate</option></select></div>
+      <div class="form-group"><label>Expiry Date</label><input type="date" id="m-expiry"/></div>
+      <div class="form-group full"><label>Medical Notes</label><textarea id="m-notes" placeholder="Any relevant medical information…"></textarea></div>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
       <button class="btn btn-ghost" onclick="closeModal('modal-add-member')">Cancel</button>
-      <button class="btn btn-primary" onclick="closeModal('modal-add-member')">✔ Save Member</button>
+      <button class="btn btn-primary" onclick="saveMember()">✔ Save Member</button>
     </div>
   </div>
 </div>
 
-<!-- Maintenance Modal -->
+<!-- Add Payment -->
+<div class="modal-overlay" id="modal-add-payment">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Record Payment</div><button class="modal-close" onclick="closeModal('modal-add-payment')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Member Name</label><input type="text" id="pay-member" placeholder="Member name"/></div>
+      <div class="form-group"><label>Type</label><select id="pay-type"><option>Membership</option><option>PT Session</option><option>Classes</option><option>Retail</option><option>Other</option></select></div>
+      <div class="form-group"><label>Amount (R)</label><input type="number" id="pay-amount" placeholder="0"/></div>
+      <div class="form-group"><label>Date</label><input type="date" id="pay-date"/></div>
+      <div class="form-group"><label>Status</label><select id="pay-status"><option>Paid</option><option>Overdue</option><option>Pending</option></select></div>
+      <div class="form-group"><label>Reference</label><input type="text" id="pay-ref" placeholder="INV-xxxx"/></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-payment')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePayment()">✔ Save Payment</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Class -->
+<div class="modal-overlay" id="modal-add-class">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Class</div><button class="modal-close" onclick="closeModal('modal-add-class')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Class Name</label><input type="text" id="cls-name" placeholder="e.g. Yoga"/></div>
+      <div class="form-group"><label>Trainer</label><input type="text" id="cls-trainer" placeholder="Trainer name"/></div>
+      <div class="form-group"><label>Capacity</label><input type="number" id="cls-capacity" placeholder="20"/></div>
+      <div class="form-group"><label>Duration (min)</label><input type="number" id="cls-duration" placeholder="60"/></div>
+      <div class="form-group"><label>Fee (R)</label><input type="number" id="cls-fee" placeholder="0"/></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-class')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveClass()">✔ Save Class</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Booking -->
+<div class="modal-overlay" id="modal-add-booking">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Booking</div><button class="modal-close" onclick="closeModal('modal-add-booking')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Member Name</label><input type="text" id="bk-member" placeholder="Member name"/></div>
+      <div class="form-group"><label>Class</label><input type="text" id="bk-class" placeholder="e.g. HIIT 08:00"/></div>
+      <div class="form-group"><label>Date</label><input type="date" id="bk-date"/></div>
+      <div class="form-group"><label>Status</label><select id="bk-status"><option>Confirmed</option><option>Pending</option><option>Cancelled</option></select></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-booking')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveBooking()">✔ Save Booking</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add PT Session -->
+<div class="modal-overlay" id="modal-add-pt">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add PT Session</div><button class="modal-close" onclick="closeModal('modal-add-pt')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Client Name</label><input type="text" id="pt-client" placeholder="Client name"/></div>
+      <div class="form-group"><label>Trainer</label><select id="pt-trainer"><option>Marcus Dube</option><option>Jake Botha</option><option>Priya Singh</option><option>Fatima Moosa</option></select></div>
+      <div class="form-group"><label>Next Session Date</label><input type="date" id="pt-date"/></div>
+      <div class="form-group"><label>Time</label><input type="time" id="pt-time"/></div>
+      <div class="form-group full"><label>Progress Notes</label><textarea id="pt-notes" placeholder="Client progress notes…"></textarea></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-pt')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePT()">✔ Save Session</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Equipment -->
+<div class="modal-overlay" id="modal-add-equipment">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Equipment</div><button class="modal-close" onclick="closeModal('modal-add-equipment')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Item Name</label><input type="text" id="eq-name" placeholder="e.g. Treadmill #5"/></div>
+      <div class="form-group"><label>Category</label><select id="eq-cat"><option>Machine</option><option>Free Weights</option><option>Cardio</option><option>Accessories</option></select></div>
+      <div class="form-group"><label>Location</label><select id="eq-loc"><option>Main Floor</option><option>Cardio Zone</option><option>Weights Floor</option><option>Spin Studio</option><option>Pool Area</option></select></div>
+      <div class="form-group"><label>Condition</label><select id="eq-cond"><option>Good</option><option>Fair</option><option>Poor</option></select></div>
+      <div class="form-group"><label>Last Service Date</label><input type="date" id="eq-service"/></div>
+      <div class="form-group"><label>Status</label><select id="eq-status"><option>Operational</option><option>Repair</option><option>Out of Service</option></select></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-equipment')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEquipment()">✔ Save Equipment</button>
+    </div>
+  </div>
+</div>
+
+<!-- Maintenance -->
 <div class="modal-overlay" id="modal-maintenance">
   <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">Log Maintenance Issue</div>
-      <button class="modal-close" onclick="closeModal('modal-maintenance')">✕</button>
-    </div>
+    <div class="modal-header"><div class="modal-title">Log Maintenance Issue</div><button class="modal-close" onclick="closeModal('modal-maintenance')">✕</button></div>
     <div class="form-row">
-      <div class="form-group full"><label>Issue Description</label><input type="text" placeholder="Describe the fault or issue"/></div>
-      <div class="form-group"><label>Priority</label>
-        <select><option>P1 — Critical</option><option>P2 — Moderate</option><option>P3 — Low</option></select>
-      </div>
-      <div class="form-group"><label>Location</label>
-        <select><option>Main Floor</option><option>Cardio Zone</option><option>Weights Floor</option><option>Spin Studio</option><option>Change Rooms</option><option>Pool Area</option><option>Reception</option></select>
-      </div>
-      <div class="form-group full"><label>Assign To</label>
-        <select><option>Tech Team</option><option>Maintenance</option><option>Facilities</option><option>External Contractor</option></select>
-      </div>
-      <div class="form-group full"><label>Notes</label><textarea placeholder="Additional details…"></textarea></div>
+      <div class="form-group full"><label>Issue Description</label><input type="text" id="maint-desc" placeholder="Describe the fault or issue"/></div>
+      <div class="form-group"><label>Priority</label><select id="maint-priority"><option>P1 — Critical</option><option>P2 — Moderate</option><option>P3 — Low</option></select></div>
+      <div class="form-group"><label>Location</label><select id="maint-loc"><option>Main Floor</option><option>Cardio Zone</option><option>Weights Floor</option><option>Spin Studio</option><option>Change Rooms</option><option>Pool Area</option><option>Reception</option></select></div>
+      <div class="form-group full"><label>Assign To</label><select id="maint-assign"><option>Tech Team</option><option>Maintenance</option><option>Facilities</option><option>External Contractor</option></select></div>
+      <div class="form-group full"><label>Notes</label><textarea id="maint-notes" placeholder="Additional details…"></textarea></div>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
       <button class="btn btn-ghost" onclick="closeModal('modal-maintenance')">Cancel</button>
-      <button class="btn btn-danger" onclick="closeModal('modal-maintenance')">🔧 Log Issue</button>
+      <button class="btn btn-danger" onclick="saveMaintenance()">🔧 Log Issue</button>
     </div>
   </div>
 </div>
 
-<!-- ══ SHARE DEMO MODAL ══ -->
+<!-- Add Staff -->
+<div class="modal-overlay" id="modal-add-staff">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Staff Member</div><button class="modal-close" onclick="closeModal('modal-add-staff')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name</label><input type="text" id="st-name" placeholder="Full name"/></div>
+      <div class="form-group"><label>Role</label><input type="text" id="st-role" placeholder="e.g. Trainer"/></div>
+      <div class="form-group"><label>Department</label><select id="st-dept"><option>Training</option><option>Admin</option><option>Cleaning</option><option>Security</option><option>Management</option></select></div>
+      <div class="form-group"><label>Contact</label><input type="text" id="st-contact" placeholder="07x xxx xxxx"/></div>
+      <div class="form-group full"><label>Shift</label><input type="text" id="st-shift" placeholder="e.g. 06:00–14:00"/></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-staff')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveStaff()">✔ Save Staff</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Product -->
+<div class="modal-overlay" id="modal-add-product">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Product</div><button class="modal-close" onclick="closeModal('modal-add-product')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Product Name</label><input type="text" id="prod-name" placeholder="Product name"/></div>
+      <div class="form-group"><label>Price (R)</label><input type="number" id="prod-price" placeholder="0"/></div>
+      <div class="form-group full"><label>Stock Quantity</label><input type="number" id="prod-stock" placeholder="0"/></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-product')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProduct()">✔ Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Sale -->
+<div class="modal-overlay" id="modal-add-sale">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Record Sale</div><button class="modal-close" onclick="closeModal('modal-add-sale')">✕</button></div>
+    <div class="form-row">
+      <div class="form-group"><label>Member / Customer</label><input type="text" id="sale-member" placeholder="Name or Walk-in"/></div>
+      <div class="form-group"><label>Item</label><input type="text" id="sale-item" placeholder="Product name"/></div>
+      <div class="form-group full"><label>Amount (R)</label><input type="number" id="sale-amount" placeholder="0"/></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-sale')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveSale()">✔ Save Sale</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE DEMO MODAL -->
 <div class="modal-overlay" id="modal-share">
   <div class="modal" style="max-width:580px">
-    <div class="modal-header">
-      <div class="modal-title">🔗 Share Demo Link</div>
-      <button class="modal-close" onclick="closeModal('modal-share')">✕</button>
-    </div>
-
+    <div class="modal-header"><div class="modal-title">🔗 Share Demo Link</div><button class="modal-close" onclick="closeModal('modal-share')">✕</button></div>
     <div id="share-create-section">
       <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:12px 14px;margin-bottom:18px;font-size:12px;color:var(--muted)">
-        ℹ️ Demo links are <strong style="color:var(--text)">view-only</strong>. Clients can explore the full app but cannot edit, share, or export anything.
+        ℹ️ Demo links are <strong style="color:var(--text)">view-only</strong>. Clients can explore the full app but cannot edit or export data.
       </div>
-
       <div class="form-row">
         <div class="form-group full"><label>Client Name / Label</label><input type="text" id="share-client-name" placeholder="e.g. ABC Fitness Group"/></div>
         <div class="form-group full"><label>Client Email (for sending)</label><input type="email" id="share-client-email" placeholder="client@company.com"/></div>
         <div class="form-group"><label>Expiry</label>
           <select id="share-expiry">
-            <option value="1">1 Day</option>
-            <option value="2" selected>2 Days</option>
-            <option value="3">3 Days</option>
-            <option value="7">7 Days</option>
-            <option value="14">14 Days</option>
-            <option value="30">30 Days</option>
+            <option value="1">1 Day</option><option value="2" selected>2 Days</option><option value="3">3 Days</option>
+            <option value="7">7 Days</option><option value="14">14 Days</option><option value="30">30 Days</option>
           </select>
         </div>
         <div class="form-group"><label>Access Note (optional)</label><input type="text" id="share-note" placeholder="e.g. For your review"/></div>
       </div>
-
       <button class="btn btn-primary" style="width:100%;justify-content:center;padding:10px" onclick="generateShareLink()">⚡ Generate Demo Link</button>
     </div>
-
     <div id="share-result-section" style="display:none;margin-top:16px">
       <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:8px;padding:14px;margin-bottom:14px">
         <div style="font-size:11px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.07em">Your Demo Link</div>
@@ -990,187 +799,405 @@
         <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="resetShareForm()">+ Create Another</button>
       </div>
     </div>
-
     <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px">
       <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px">Active Demo Links</div>
-      <div id="active-links-list">
-        <div style="font-size:12px;color:var(--muted);text-align:center;padding:12px">No active links yet</div>
-      </div>
+      <div id="active-links-list"></div>
     </div>
   </div>
 </div>
 
 <script>
-  // ── Navigation ──
-  const pages = {
-    dashboard: 'Dashboard', members: 'Members', memberships: 'Memberships',
-    access: 'Access Control', payments: 'Payments', classes: 'Classes',
-    pt: 'Personal Training', equipment: 'Equipment', maintenance: 'Maintenance',
-    staff: 'Staff', sales: 'Sales & Retail', reports: 'Reports',
-    analytics: 'Analytics', archive: 'Archive', settings: 'Settings'
-  };
+// ── HELPERS ──
+function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function toast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(err?' error':'');setTimeout(()=>t.className='toast',2800);}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
 
-  document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const page = item.dataset.page;
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      item.classList.add('active');
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById('page-' + page).classList.add('active');
-      document.getElementById('page-title').textContent = pages[page];
-    });
+// ── NAV ──
+const pageNames={dashboard:'Dashboard',members:'Members',memberships:'Memberships',access:'Access Control',payments:'Payments',classes:'Classes',pt:'Personal Training',equipment:'Equipment',maintenance:'Maintenance',staff:'Staff',sales:'Sales & Retail',reports:'Reports',analytics:'Analytics',archive:'Archive',settings:'Settings'};
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const page=item.dataset.page;
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    item.classList.add('active');
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById('page-'+page).classList.add('active');
+    document.getElementById('page-title').textContent=pageNames[page];
+    renderPage(page);
   });
+});
+function renderPage(p){
+  if(p==='members')renderMembers();
+  if(p==='maintenance')renderMaintenance();
+  if(p==='equipment')renderEquipment();
+  if(p==='staff')renderStaff();
+  if(p==='pt')renderPT();
+  if(p==='payments')renderPayments();
+  if(p==='classes'){renderClasses();renderBookings();}
+  if(p==='sales'){renderProducts();renderSales();}
+  if(p==='access')renderCheckins();
+}
 
-  // ── Tabs ──
-  function switchTab(el, tabId) {
-    const parent = el.closest('.section');
-    parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-    ['tab-schedule','tab-classes-list','tab-bookings'].forEach(id => {
-      const el2 = document.getElementById(id);
-      if (el2) el2.style.display = id === tabId ? 'block' : 'none';
-    });
-  }
-
-  // ── Modals ──
-  function openModal(id) { document.getElementById(id).classList.add('open'); }
-  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+// ── TABS ──
+function switchTab(el,tabId){
+  el.closest('.section').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['tab-schedule','tab-classes-list','tab-bookings'].forEach(id=>{
+    const e=document.getElementById(id);if(e)e.style.display=id===tabId?'block':'none';
   });
+  if(tabId==='tab-classes-list')renderClasses();
+  if(tabId==='tab-bookings')renderBookings();
+}
 
-  // ── Share Demo System ──
-  let activeLinks = JSON.parse(localStorage.getItem('sdgo_links') || '[]');
+// ── MEMBERS ──
+let members=ld('sdgo_members',[
+  {id:'#1042',first:'James',last:'Nkosi',type:'Monthly',status:'Active',expiry:'2026-06-30',phone:'071 234 5678'},
+  {id:'#1041',first:'Sara',last:'Patel',type:'Annual',status:'Active',expiry:'2027-01-14',phone:'082 345 6789'},
+  {id:'#1038',first:'Tebogo',last:'Molefe',type:'Monthly',status:'Expiring',expiry:'2026-06-20',phone:'063 456 7890'},
+  {id:'#1031',first:'Linda',last:'van der Berg',type:'Weekly',status:'Overdue',expiry:'2026-06-05',phone:'072 567 8901'},
+  {id:'#1029',first:'Kavya',last:'Dlamini',type:'Corporate',status:'Active',expiry:'2026-12-31',phone:'084 678 9012'},
+]);
+function saveMember(){
+  const first=document.getElementById('m-first').value.trim();
+  const last=document.getElementById('m-last').value.trim();
+  if(!first||!last){toast('Please enter first and last name.',true);return;}
+  members.push({id:'#'+(1042+members.length),first,last,type:document.getElementById('m-type').value,status:'Active',expiry:document.getElementById('m-expiry').value||'—',phone:document.getElementById('m-phone').value});
+  sv('sdgo_members',members);closeModal('modal-add-member');renderMembers();toast('✔ Member added!');
+  ['m-first','m-last','m-phone','m-email','m-notes'].forEach(id=>document.getElementById(id).value='');
+}
+function deleteMember(i){if(!confirm('Delete this member?'))return;members.splice(i,1);sv('sdgo_members',members);renderMembers();toast('Member deleted.');}
+function renderMembers(){
+  const search=(document.getElementById('member-search')?.value||'').toLowerCase();
+  const filter=document.getElementById('member-filter')?.value||'All Statuses';
+  const sc={Active:'badge-green',Expiring:'badge-orange',Overdue:'badge-red',Suspended:'badge-blue'};
+  const tbody=document.getElementById('members-tbody');
+  const list=members.filter(m=>{
+    const name=(m.first+' '+m.last).toLowerCase();
+    return(!search||name.includes(search)||m.id.includes(search))&&(filter==='All Statuses'||m.status===filter);
+  });
+  if(!list.length){tbody.innerHTML='<tr><td colspan="7" class="empty-state">No members found.</td></tr>';return;}
+  tbody.innerHTML=list.map((m,i)=>{
+    const ri=members.indexOf(m);
+    const init=(m.first[0]||'')+(m.last[0]||'');
+    return`<tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar">${init.toUpperCase()}</div>${m.first} ${m.last}</div></td><td style="color:var(--muted)">${m.id}</td><td>${m.type}</td><td><span class="badge ${sc[m.status]||'badge-blue'}">${m.status}</span></td><td>${m.expiry}</td><td>${m.phone}</td><td><button class="delete-btn" onclick="deleteMember(${ri})">🗑</button></td></tr>`;
+  }).join('');
+}
 
-  function saveLinks() { localStorage.setItem('sdgo_links', JSON.stringify(activeLinks)); }
+// ── PAYMENTS ──
+let payments=ld('sdgo_payments',[
+  {member:'Sara Patel',type:'Membership',amount:'650',date:'2026-06-14',status:'Paid',ref:'#INV-2284'},
+  {member:'James Nkosi',type:'Membership',amount:'650',date:'2026-06-12',status:'Paid',ref:'#INV-2283'},
+  {member:'Tebogo Molefe',type:'PT Session',amount:'350',date:'2026-06-10',status:'Paid',ref:'#INV-2280'},
+  {member:'Linda van der Berg',type:'Membership',amount:'350',date:'2026-06-05',status:'Overdue',ref:'#INV-2271'},
+]);
+function savePayment(){
+  const member=document.getElementById('pay-member').value.trim();
+  const amount=document.getElementById('pay-amount').value.trim();
+  if(!member||!amount){toast('Please fill in member and amount.',true);return;}
+  payments.unshift({member,type:document.getElementById('pay-type').value,amount,date:document.getElementById('pay-date').value||new Date().toISOString().split('T')[0],status:document.getElementById('pay-status').value,ref:document.getElementById('pay-ref').value||'#INV-'+(2300+payments.length)});
+  sv('sdgo_payments',payments);closeModal('modal-add-payment');renderPayments();toast('✔ Payment recorded!');
+}
+function deletePayment(i){payments.splice(i,1);sv('sdgo_payments',payments);renderPayments();toast('Payment deleted.');}
+function renderPayments(){
+  const tbody=document.getElementById('payments-tbody');if(!tbody)return;
+  if(!payments.length){tbody.innerHTML='<tr><td colspan="7" class="empty-state">No payments yet.</td></tr>';return;}
+  tbody.innerHTML=payments.map((p,i)=>`<tr><td>${p.member}</td><td>${p.type}</td><td style="color:var(--gold)">R${p.amount}</td><td>${p.date}</td><td><span class="badge ${p.status==='Paid'?'badge-green':p.status==='Overdue'?'badge-red':'badge-orange'}">${p.status}</span></td><td style="color:var(--muted)">${p.ref}</td><td><button class="delete-btn" onclick="deletePayment(${i})">🗑</button></td></tr>`).join('');
+}
 
-  function generateShareLink() {
-    const name  = document.getElementById('share-client-name').value.trim();
-    const email = document.getElementById('share-client-email').value.trim();
-    const days  = parseInt(document.getElementById('share-expiry').value);
-    const note  = document.getElementById('share-note').value.trim();
-    if (!name) { alert('Please enter a client name.'); return; }
-
-    const token   = Math.random().toString(36).slice(2,10).toUpperCase();
-    const expires = Date.now() + days * 864e5;
-    const link    = window.location.href.split('?')[0] + '?demo=' + token;
-
-    const record = { token, name, email, note, expires, days, link, created: Date.now() };
-    activeLinks.push(record);
-    saveLinks();
-
-    document.getElementById('share-link-output').value = link;
-    document.getElementById('share-expiry-note').textContent =
-      '⏱ Expires ' + new Date(expires).toLocaleString() + ' (' + days + ' day' + (days>1?'s':'') + ')';
-    document.getElementById('share-create-section').style.display = 'none';
-    document.getElementById('share-result-section').style.display = 'block';
-    renderActiveLinks();
+// ── MAINTENANCE ──
+let maintenance=ld('sdgo_maintenance',[
+  {desc:'Treadmill #4 motor fault',priority:'P1 — Critical',location:'Cardio Zone',date:'15 Jun',status:'In Progress',assigned:'Tech Team'},
+  {desc:'Pool pump pressure low',priority:'P1 — Critical',location:'Pool Area',date:'16 Jun',status:'Open',assigned:'Unassigned'},
+  {desc:'Rowing machine chain slip',priority:'P2 — Moderate',location:'Cardio Zone',date:'12 Jun',status:'In Progress',assigned:'Tech Team'},
+  {desc:'Locker room light out',priority:'P3 — Low',location:'Change Rooms',date:'14 Jun',status:'Scheduled',assigned:'Maintenance'},
+]);
+function saveMaintenance(){
+  const desc=document.getElementById('maint-desc').value.trim();
+  if(!desc){toast('Please describe the issue.',true);return;}
+  const today=new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'short'});
+  maintenance.unshift({desc,priority:document.getElementById('maint-priority').value,location:document.getElementById('maint-loc').value,date:today,status:'Open',assigned:document.getElementById('maint-assign').value});
+  sv('sdgo_maintenance',maintenance);closeModal('modal-maintenance');renderMaintenance();toast('✔ Issue logged!');
+  document.getElementById('maint-desc').value='';document.getElementById('maint-notes').value='';
+}
+function deleteMaintenance(i){maintenance.splice(i,1);sv('sdgo_maintenance',maintenance);renderMaintenance();toast('Issue removed.');}
+function renderMaintenance(){
+  const mp1=document.getElementById('maint-p1');if(mp1)mp1.textContent=maintenance.filter(m=>m.priority.startsWith('P1')).length;
+  const mp2=document.getElementById('maint-p2');if(mp2)mp2.textContent=maintenance.filter(m=>m.priority.startsWith('P2')).length;
+  const mp3=document.getElementById('maint-p3');if(mp3)mp3.textContent=maintenance.filter(m=>m.priority.startsWith('P3')).length;
+  const tbody=document.getElementById('maintenance-tbody');if(!tbody)return;
+  if(!maintenance.length){tbody.innerHTML='<tr><td colspan="7" class="empty-state">No maintenance issues logged.</td></tr>';return;}
+  tbody.innerHTML=maintenance.map((m,i)=>{
+    const pb=m.priority.startsWith('P1')?'badge-red':m.priority.startsWith('P2')?'badge-orange':'badge-blue';
+    const sb=m.status==='Open'?'badge-red':m.status==='In Progress'?'badge-orange':m.status==='Resolved'?'badge-green':'badge-blue';
+    return`<tr><td>${m.desc}</td><td><span class="badge ${pb}">${m.priority.split('—')[0].trim()}</span></td><td>${m.location}</td><td>${m.date}</td><td><span class="badge ${sb}">${m.status}</span></td><td>${m.assigned}</td><td><button class="delete-btn" onclick="deleteMaintenance(${i})">🗑</button></td></tr>`;
+  }).join('');
+  const da=document.getElementById('dash-maintenance-alerts');
+  if(da){
+    const open=maintenance.filter(m=>m.status!=='Resolved').slice(0,4);
+    if(!open.length){da.innerHTML='<div style="color:var(--green);font-size:13px">✔ No open maintenance issues</div>';return;}
+    da.innerHTML=open.map(m=>{const cls=m.priority.startsWith('P1')?'alert-p1':m.priority.startsWith('P2')?'alert-p2':'alert-p3';const icon=m.priority.startsWith('P1')?'🔴':m.priority.startsWith('P2')?'🟠':'🔵';return`<div class="alert ${cls}">${icon} ${m.priority.split('—')[0].trim()} — ${m.desc}</div>`;}).join('');
   }
+}
 
-  function copyLink() {
-    const val = document.getElementById('share-link-output').value;
-    navigator.clipboard.writeText(val).then(() => {
-      const btn = event.target;
-      btn.textContent = '✔ Copied!';
-      setTimeout(() => btn.textContent = '📋 Copy', 2000);
-    });
+// ── EQUIPMENT ──
+let equipment=ld('sdgo_equipment',[
+  {name:'Treadmill #1',cat:'Machine',loc:'Cardio Zone',cond:'Good',service:'Mar 2026',status:'Operational'},
+  {name:'Treadmill #4',cat:'Machine',loc:'Cardio Zone',cond:'Poor',service:'Jan 2026',status:'Out of Service'},
+  {name:'Dumbbells 5–50kg',cat:'Free Weights',loc:'Weights Floor',cond:'Good',service:'May 2026',status:'Operational'},
+  {name:'Rowing Machine #2',cat:'Machine',loc:'Cardio Zone',cond:'Fair',service:'Feb 2026',status:'Repair'},
+  {name:'Barbell Set',cat:'Free Weights',loc:'Power Rack',cond:'Good',service:'Apr 2026',status:'Operational'},
+]);
+function saveEquipment(){
+  const name=document.getElementById('eq-name').value.trim();
+  if(!name){toast('Please enter item name.',true);return;}
+  equipment.push({name,cat:document.getElementById('eq-cat').value,loc:document.getElementById('eq-loc').value,cond:document.getElementById('eq-cond').value,service:document.getElementById('eq-service').value||'Not recorded',status:document.getElementById('eq-status').value});
+  sv('sdgo_equipment',equipment);closeModal('modal-add-equipment');renderEquipment();toast('✔ Equipment added!');
+}
+function deleteEquipment(i){equipment.splice(i,1);sv('sdgo_equipment',equipment);renderEquipment();toast('Equipment removed.');}
+function renderEquipment(){
+  const tbody=document.getElementById('equipment-tbody');if(!tbody)return;
+  const tot=document.getElementById('eq-total');if(tot)tot.textContent=equipment.length;
+  const op=document.getElementById('eq-operational');if(op)op.textContent=equipment.filter(e=>e.status==='Operational').length;
+  const rp=document.getElementById('eq-repair');if(rp)rp.textContent=equipment.filter(e=>e.status==='Repair').length;
+  const out=document.getElementById('eq-out');if(out)out.textContent=equipment.filter(e=>e.status==='Out of Service').length;
+  if(!equipment.length){tbody.innerHTML='<tr><td colspan="7" class="empty-state">No equipment recorded.</td></tr>';return;}
+  tbody.innerHTML=equipment.map((e,i)=>{const sb=e.status==='Operational'?'badge-green':e.status==='Repair'?'badge-orange':'badge-red';return`<tr><td>${e.name}</td><td>${e.cat}</td><td>${e.loc}</td><td>${e.cond}</td><td>${e.service}</td><td><span class="badge ${sb}">${e.status}</span></td><td><button class="delete-btn" onclick="deleteEquipment(${i})">🗑</button></td></tr>`;}).join('');
+}
+
+// ── STAFF ──
+let staff=ld('sdgo_staff',[
+  {name:'Marcus Dube',role:'Head Trainer',dept:'Training',contact:'071 111 2222',shift:'06:00–14:00'},
+  {name:'Priya Singh',role:'Trainer',dept:'Training',contact:'082 222 3333',shift:'07:00–15:00'},
+  {name:'Jake Botha',role:'Trainer',dept:'Training',contact:'083 333 4444',shift:'08:00–16:00'},
+  {name:'Amina Mohamed',role:'Admin',dept:'Admin',contact:'084 444 5555',shift:'08:00–17:00'},
+  {name:'Khaya Zulu',role:'Security',dept:'Security',contact:'071 555 6666',shift:'05:00–13:00'},
+]);
+function saveStaff(){
+  const name=document.getElementById('st-name').value.trim();
+  if(!name){toast('Please enter staff name.',true);return;}
+  staff.push({name,role:document.getElementById('st-role').value,dept:document.getElementById('st-dept').value,contact:document.getElementById('st-contact').value,shift:document.getElementById('st-shift').value});
+  sv('sdgo_staff',staff);closeModal('modal-add-staff');renderStaff();toast('✔ Staff member added!');
+}
+function deleteStaff(i){staff.splice(i,1);sv('sdgo_staff',staff);renderStaff();toast('Staff member removed.');}
+function renderStaff(){
+  const tbody=document.getElementById('staff-tbody');if(!tbody)return;
+  if(!staff.length){tbody.innerHTML='<tr><td colspan="7" class="empty-state">No staff recorded.</td></tr>';return;}
+  tbody.innerHTML=staff.map((s,i)=>{const init=s.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);return`<tr><td><div style="display:flex;align-items:center;gap:8px"><div class="avatar" style="width:28px;height:28px;font-size:10px">${init}</div>${s.name}</div></td><td>${s.role}</td><td>${s.dept}</td><td>${s.contact}</td><td>${s.shift}</td><td><span class="badge badge-green">Active</span></td><td><button class="delete-btn" onclick="deleteStaff(${i})">🗑</button></td></tr>`;}).join('');
+}
+
+// ── PT SESSIONS ──
+let ptSessions=ld('sdgo_pt',[
+  {client:'James Nkosi',trainer:'Marcus Dube',date:'2026-06-17',time:'09:00',notes:'On track'},
+  {client:'Linda van der Berg',trainer:'Jake Botha',date:'2026-06-18',time:'07:00',notes:'Review needed'},
+  {client:'Kavya Dlamini',trainer:'Priya Singh',date:'2026-06-17',time:'10:00',notes:'On track'},
+]);
+function savePT(){
+  const client=document.getElementById('pt-client').value.trim();
+  if(!client){toast('Please enter client name.',true);return;}
+  ptSessions.push({client,trainer:document.getElementById('pt-trainer').value,date:document.getElementById('pt-date').value,time:document.getElementById('pt-time').value,notes:document.getElementById('pt-notes').value||'On track'});
+  sv('sdgo_pt',ptSessions);closeModal('modal-add-pt');renderPT();toast('✔ PT session added!');
+}
+function deletePT(i){ptSessions.splice(i,1);sv('sdgo_pt',ptSessions);renderPT();toast('Session removed.');}
+function renderPT(){
+  const tbody=document.getElementById('pt-tbody');if(!tbody)return;
+  const cnt=document.getElementById('pt-sessions-count');if(cnt)cnt.textContent=ptSessions.length;
+  if(!ptSessions.length){tbody.innerHTML='<tr><td colspan="5" class="empty-state">No PT sessions. Click + Add Session.</td></tr>';return;}
+  tbody.innerHTML=ptSessions.map((s,i)=>`<tr><td>${s.client}</td><td>${s.trainer}</td><td>${s.date} ${s.time}</td><td><span class="badge badge-green">${s.notes}</span></td><td><button class="delete-btn" onclick="deletePT(${i})">🗑</button></td></tr>`).join('');
+}
+
+// ── CLASSES ──
+let classes=ld('sdgo_classes',[
+  {name:'Yoga',trainer:'Priya Singh',capacity:'20',duration:'60',fee:'120'},
+  {name:'HIIT',trainer:'Marcus Dube',capacity:'20',duration:'45',fee:'100'},
+  {name:'Spinning',trainer:'Fatima Moosa',capacity:'18',duration:'50',fee:'110'},
+  {name:'Boxing',trainer:'Jake Botha',capacity:'15',duration:'60',fee:'130'},
+]);
+function saveClass(){
+  const name=document.getElementById('cls-name').value.trim();
+  if(!name){toast('Please enter class name.',true);return;}
+  classes.push({name,trainer:document.getElementById('cls-trainer').value,capacity:document.getElementById('cls-capacity').value,duration:document.getElementById('cls-duration').value,fee:document.getElementById('cls-fee').value});
+  sv('sdgo_classes',classes);closeModal('modal-add-class');renderClasses();toast('✔ Class added!');
+}
+function deleteClass(i){classes.splice(i,1);sv('sdgo_classes',classes);renderClasses();toast('Class removed.');}
+function renderClasses(){
+  const tbody=document.getElementById('classes-tbody');if(!tbody)return;
+  if(!classes.length){tbody.innerHTML='<tr><td colspan="6" class="empty-state">No classes yet.</td></tr>';return;}
+  tbody.innerHTML=classes.map((c,i)=>`<tr><td>${c.name}</td><td>${c.trainer}</td><td>${c.capacity}</td><td>${c.duration} min</td><td style="color:var(--gold)">R${c.fee}</td><td><button class="delete-btn" onclick="deleteClass(${i})">🗑</button></td></tr>`).join('');
+}
+
+// ── BOOKINGS ──
+let bookings=ld('sdgo_bookings',[
+  {member:'James Nkosi',cls:'HIIT 08:00',date:'2026-06-16',status:'Confirmed'},
+  {member:'Sara Patel',cls:'Yoga 07:00',date:'2026-06-16',status:'Confirmed'},
+  {member:'Kavya Dlamini',cls:'Boxing 10:00',date:'2026-06-17',status:'Pending'},
+]);
+function saveBooking(){
+  const member=document.getElementById('bk-member').value.trim();
+  if(!member){toast('Please enter member name.',true);return;}
+  bookings.unshift({member,cls:document.getElementById('bk-class').value,date:document.getElementById('bk-date').value,status:document.getElementById('bk-status').value});
+  sv('sdgo_bookings',bookings);closeModal('modal-add-booking');renderBookings();toast('✔ Booking added!');
+}
+function deleteBooking(i){bookings.splice(i,1);sv('sdgo_bookings',bookings);renderBookings();toast('Booking removed.');}
+function renderBookings(){
+  const tbody=document.getElementById('bookings-tbody');if(!tbody)return;
+  if(!bookings.length){tbody.innerHTML='<tr><td colspan="5" class="empty-state">No bookings yet.</td></tr>';return;}
+  tbody.innerHTML=bookings.map((b,i)=>`<tr><td>${b.member}</td><td>${b.cls}</td><td>${b.date}</td><td><span class="badge ${b.status==='Confirmed'?'badge-green':b.status==='Pending'?'badge-blue':'badge-red'}">${b.status}</span></td><td><button class="delete-btn" onclick="deleteBooking(${i})">🗑</button></td></tr>`).join('');
+}
+
+// ── PRODUCTS ──
+let products=ld('sdgo_products',[
+  {name:'Protein Shake',price:'65',stock:'42'},
+  {name:'Energy Bar',price:'35',stock:'80'},
+  {name:'Water Bottle (branded)',price:'120',stock:'18'},
+  {name:'Gym Gloves',price:'180',stock:'9'},
+  {name:'Resistance Band Set',price:'220',stock:'14'},
+]);
+function saveProduct(){
+  const name=document.getElementById('prod-name').value.trim();
+  if(!name){toast('Please enter product name.',true);return;}
+  products.push({name,price:document.getElementById('prod-price').value,stock:document.getElementById('prod-stock').value});
+  sv('sdgo_products',products);closeModal('modal-add-product');renderProducts();toast('✔ Product added!');
+}
+function deleteProduct(i){products.splice(i,1);sv('sdgo_products',products);renderProducts();toast('Product removed.');}
+function renderProducts(){
+  const tbody=document.getElementById('products-tbody');if(!tbody)return;
+  if(!products.length){tbody.innerHTML='<tr><td colspan="4" class="empty-state">No products.</td></tr>';return;}
+  tbody.innerHTML=products.map((p,i)=>`<tr><td>${p.name}</td><td style="color:var(--gold)">R${p.price}</td><td>${p.stock}</td><td><button class="delete-btn" onclick="deleteProduct(${i})">🗑</button></td></tr>`).join('');
+}
+
+// ── SALES ──
+let sales=ld('sdgo_sales',[
+  {member:'James Nkosi',item:'Protein Shake',amount:'65',time:'09:45'},
+  {member:'Sara Patel',item:'Water Bottle',amount:'120',time:'09:40'},
+  {member:'Kavya Dlamini',item:'Energy Bar x2',amount:'70',time:'08:20'},
+]);
+function saveSale(){
+  const member=document.getElementById('sale-member').value.trim();
+  const item=document.getElementById('sale-item').value.trim();
+  if(!member||!item){toast('Please fill in all fields.',true);return;}
+  sales.unshift({member,item,amount:document.getElementById('sale-amount').value,time:new Date().toTimeString().slice(0,5)});
+  sv('sdgo_sales',sales);closeModal('modal-add-sale');renderSales();toast('✔ Sale recorded!');
+}
+function deleteSale(i){sales.splice(i,1);sv('sdgo_sales',sales);renderSales();toast('Sale removed.');}
+function renderSales(){
+  const tbody=document.getElementById('sales-tbody');if(!tbody)return;
+  if(!sales.length){tbody.innerHTML='<tr><td colspan="5" class="empty-state">No sales recorded.</td></tr>';return;}
+  tbody.innerHTML=sales.map((s,i)=>`<tr><td>${s.member}</td><td>${s.item}</td><td style="color:var(--gold)">R${s.amount}</td><td>${s.time}</td><td><button class="delete-btn" onclick="deleteSale(${i})">🗑</button></td></tr>`).join('');
+}
+
+// ── CHECKINS ──
+let checkins=ld('sdgo_checkins',[
+  {member:'James Nkosi',entry:'09:42',exit:'—',method:'QR'},
+  {member:'Sara Patel',entry:'09:38',exit:'—',method:'Card'},
+  {member:'Tebogo Molefe',entry:'09:31',exit:'—',method:'QR'},
+]);
+function recordCheckin(){
+  const name=document.getElementById('checkin-name').value.trim();
+  if(!name){toast('Please enter a member name.',true);return;}
+  const now=new Date().toTimeString().slice(0,5);
+  const dir=document.getElementById('checkin-direction').value;
+  const method=document.getElementById('checkin-method').value;
+  if(dir==='Entry'){checkins.unshift({member:name,entry:now,exit:'—',method});}
+  else{const ex=checkins.find(c=>c.member.toLowerCase()===name.toLowerCase()&&c.exit==='—');if(ex)ex.exit=now;else checkins.unshift({member:name,entry:'—',exit:now,method});}
+  sv('sdgo_checkins',checkins);renderCheckins();
+  document.getElementById('checkin-name').value='';
+  const cnt=document.getElementById('access-total');if(cnt)cnt.textContent=checkins.length;
+  const ig=document.getElementById('access-in-gym');if(ig)ig.textContent=checkins.filter(c=>c.exit==='—').length;
+  toast('✔ Check-in recorded!');
+}
+function renderCheckins(){
+  const tbody=document.getElementById('checkin-tbody');if(!tbody)return;
+  tbody.innerHTML=checkins.slice(0,10).map(c=>`<tr><td>${c.member}</td><td>${c.entry}</td><td>${c.exit}</td><td><span class="badge badge-blue">${c.method}</span></td></tr>`).join('');
+}
+
+// ── SETTINGS ──
+function saveSettings(){
+  sv('sdgo_settings',{gymName:document.getElementById('set-gym-name').value,address:document.getElementById('set-address').value,phone:document.getElementById('set-phone').value,email:document.getElementById('set-email').value,open:document.getElementById('set-open').value,close:document.getElementById('set-close').value});
+  toast('✔ Settings saved!');
+}
+
+// ── SHARE DEMO ── (FIX: encode expiry in URL so it works across any browser/device)
+let activeLinks=ld('sdgo_links',[]);
+function generateShareLink(){
+  const name=document.getElementById('share-client-name').value.trim();
+  const email=document.getElementById('share-client-email').value.trim();
+  const days=parseInt(document.getElementById('share-expiry').value);
+  const note=document.getElementById('share-note').value.trim();
+  if(!name){toast('Please enter a client name.',true);return;}
+  const expires=Date.now()+days*864e5;
+  // KEY FIX: encode expiry in the URL itself — works on ANY device, no localStorage needed
+  const payload=btoa(JSON.stringify({name,email,note,expires}));
+  const base=window.location.href.split('?')[0];
+  const link=base+'?demo='+encodeURIComponent(payload);
+  activeLinks.push({name,email,note,expires,days,link,created:Date.now()});
+  sv('sdgo_links',activeLinks);
+  document.getElementById('share-link-output').value=link;
+  document.getElementById('share-expiry-note').textContent='⏱ Expires '+new Date(expires).toLocaleString()+' ('+days+' day'+(days>1?'s':'')+')';
+  document.getElementById('share-create-section').style.display='none';
+  document.getElementById('share-result-section').style.display='block';
+  renderActiveLinks();
+}
+function copyLink(){
+  navigator.clipboard.writeText(document.getElementById('share-link-output').value).then(()=>{
+    const btn=event.target;btn.textContent='✔ Copied!';setTimeout(()=>btn.textContent='📋 Copy',2000);
+  });
+}
+function emailLink(){
+  const email=document.getElementById('share-client-email').value.trim();
+  const link=document.getElementById('share-link-output').value;
+  const note=document.getElementById('share-expiry-note').textContent;
+  const sub=encodeURIComponent('Smart Design Gym Operations – Demo Access');
+  const body=encodeURIComponent('Dear Client,\n\nPlease find your exclusive demo link below:\n\n'+link+'\n\n'+note+'\n\nThis is a view-only demo. No login required — just click and explore.\n\nKind regards,\nSmart Design Gym Operations');
+  window.location.href='mailto:'+email+'?subject='+sub+'&body='+body;
+}
+function resetShareForm(){
+  ['share-client-name','share-client-email','share-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('share-create-section').style.display='block';
+  document.getElementById('share-result-section').style.display='none';
+}
+function revokeLink(i){activeLinks.splice(i,1);sv('sdgo_links',activeLinks);renderActiveLinks();toast('Link revoked.');}
+function renderActiveLinks(){
+  const el=document.getElementById('active-links-list');
+  activeLinks=activeLinks.filter(l=>l.expires>Date.now());sv('sdgo_links',activeLinks);
+  if(!activeLinks.length){el.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:12px">No active links</div>';return;}
+  el.innerHTML=activeLinks.map((l,i)=>{
+    const r=Math.max(0,Math.round((l.expires-Date.now())/36e5));
+    const ht=r>=24?Math.floor(r/24)+'d '+(r%24)+'h':r+'h';
+    return`<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--navy);border-radius:6px;margin-bottom:6px;gap:8px"><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--text)">${l.name}</div><div style="font-size:10px;color:var(--muted)">${l.email||'No email'} · ⏱ ${ht} left</div></div><button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(activeLinks[${i}].link);this.textContent='✔';setTimeout(()=>this.textContent='Copy',1500)">Copy</button><button class="btn btn-danger btn-sm" onclick="revokeLink(${i})">Revoke</button></div>`;
+  }).join('');
+}
+
+// ── CLIENT DEMO MODE ──
+function checkDemoMode(){
+  const params=new URLSearchParams(window.location.search);
+  const raw=params.get('demo');
+  if(!raw){renderActiveLinks();return;}
+  let record;
+  try{record=JSON.parse(atob(decodeURIComponent(raw)));}catch(e){showExpired();return;}
+  if(!record||!record.expires||record.expires<Date.now()){showExpired();return;}
+  const btn=document.getElementById('share-btn');if(btn)btn.style.display='none';
+  const banner=document.getElementById('client-banner');
+  banner.style.display='flex';
+  document.getElementById('main').style.marginTop='52px';
+  document.getElementById('client-expiry-text').textContent='Shared with '+record.name+(record.note?' · '+record.note:'');
+  function tick(){
+    const r=record.expires-Date.now();
+    if(r<=0){document.getElementById('client-countdown').textContent='⏱ Expired';return;}
+    const h=Math.floor(r/36e5),m=Math.floor((r%36e5)/6e4),s=Math.floor((r%6e4)/1e3);
+    document.getElementById('client-countdown').textContent='⏱ '+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+' remaining';
   }
+  tick();setInterval(tick,1000);
+}
+function showExpired(){
+  document.body.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0B1A2E;font-family:Inter,sans-serif;flex-direction:column;gap:16px"><div style="font-size:48px">🔒</div><div style="font-size:20px;font-weight:700;color:#E2E8F0">This demo link has expired</div><div style="font-size:14px;color:#94A3B8">Please contact Smart Design Gym Operations for a new link.</div></div>`;
+}
 
-  function emailLink() {
-    const email   = document.getElementById('share-client-email').value.trim();
-    const link    = document.getElementById('share-link-output').value;
-    const expiry  = document.getElementById('share-expiry-note').textContent;
-    const subject = encodeURIComponent('Smart Design Gym Operations – Demo Access');
-    const body    = encodeURIComponent(
-      'Dear Client,\n\nPlease find your exclusive demo link below:\n\n' + link +
-      '\n\n' + expiry + '\n\nThis is a view-only demo. No login required — just click and explore.\n\nKind regards,\nSmart Design Gym Operations'
-    );
-    window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
-  }
-
-  function resetShareForm() {
-    document.getElementById('share-client-name').value = '';
-    document.getElementById('share-client-email').value = '';
-    document.getElementById('share-note').value = '';
-    document.getElementById('share-create-section').style.display = 'block';
-    document.getElementById('share-result-section').style.display = 'none';
-  }
-
-  function revokeLink(token) {
-    activeLinks = activeLinks.filter(l => l.token !== token);
-    saveLinks();
-    renderActiveLinks();
-  }
-
-  function renderActiveLinks() {
-    const el = document.getElementById('active-links-list');
-    // prune expired
-    activeLinks = activeLinks.filter(l => l.expires > Date.now());
-    saveLinks();
-    if (!activeLinks.length) {
-      el.innerHTML = '<div style="font-size:12px;color:var(--muted);text-align:center;padding:12px">No active links</div>';
-      return;
-    }
-    el.innerHTML = activeLinks.map(l => {
-      const remaining = Math.max(0, Math.round((l.expires - Date.now()) / 36e5));
-      const hText = remaining >= 24 ? Math.floor(remaining/24)+'d ' + (remaining%24)+'h' : remaining+'h';
-      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--navy);border-radius:6px;margin-bottom:6px;gap:8px">
-        <div style="flex:1;min-width:0">
-          <div style="font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${l.name}</div>
-          <div style="font-size:10px;color:var(--muted)">${l.email || 'No email'} · ⏱ ${hText} left</div>
-        </div>
-        <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText('${l.link}');this.textContent='✔';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
-        <button class="btn btn-danger btn-sm" onclick="revokeLink('${l.token}')">Revoke</button>
-      </div>`;
-    }).join('');
-  }
-
-  // ── Client / Demo View Detection ──
-  function checkDemoMode() {
-    const params = new URLSearchParams(window.location.search);
-    const token  = params.get('demo');
-    if (!token) { renderActiveLinks(); return; }
-
-    const links = JSON.parse(localStorage.getItem('sdgo_links') || '[]');
-    const record = links.find(l => l.token === token);
-
-    if (!record || record.expires < Date.now()) {
-      // Expired or invalid
-      document.body.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0B1A2E;font-family:Inter,sans-serif;flex-direction:column;gap:16px">
-        <div style="font-size:48px">🔒</div>
-        <div style="font-size:20px;font-weight:700;color:#E2E8F0">This demo link has expired</div>
-        <div style="font-size:14px;color:#94A3B8">Please contact Smart Design Gym Operations to request a new link.</div>
-      </div>`;
-      return;
-    }
-
-    // Valid client view — hide share button, show banner
-    const shareBtn = document.getElementById('share-btn');
-    if (shareBtn) shareBtn.style.display = 'none';
-
-    const banner = document.getElementById('client-banner');
-    banner.style.display = 'flex';
-    // push content down
-    document.getElementById('main').style.marginTop = '52px';
-
-    const remaining = record.expires - Date.now();
-    const hours = Math.floor(remaining / 36e5);
-    const mins  = Math.floor((remaining % 36e5) / 6e4);
-    document.getElementById('client-expiry-text').textContent =
-      'Shared with ' + record.name + (record.note ? ' · ' + record.note : '');
-
-    function tick() {
-      const r = record.expires - Date.now();
-      if (r <= 0) { document.getElementById('client-countdown').textContent = '⏱ Expired'; return; }
-      const h = Math.floor(r/36e5), m = Math.floor((r%36e5)/6e4), s = Math.floor((r%6e4)/1e3);
-      document.getElementById('client-countdown').textContent =
-        '⏱ ' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' remaining';
-    }
-    tick();
-    setInterval(tick, 1000);
-  }
-
-  checkDemoMode();
+// ── INIT ──
+checkDemoMode();
+renderMaintenance();
+renderCheckins();
 </script>
 </body>
 </html>
