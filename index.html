@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Smart Design Gym Operations</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Playfair+Display:ital,wght@1,600&display=swap');
   :root {
     --navy: #0B1A2E; --navy2: #102240; --navy3: #152D55; --card: #162038;
     --border: #1E3160; --green: #22C55E; --orange: #F97316; --red: #EF4444;
@@ -104,6 +104,10 @@
   .delete-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 4px; }
   .delete-btn:hover { background: rgba(239,68,68,0.1); }
   .empty-state { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; }
+  .app-footer { text-align: center; padding: 18px 24px 10px; border-top: 1px solid var(--border); margin-top: 8px; }
+  .app-footer .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+  .app-footer .footer-dev { margin-top: 4px; font-size: 12px; color: #4a5568; }
+  .app-footer .footer-dev .blake { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; font-weight: 600; background: linear-gradient(90deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.03em; }
 </style>
 </head>
 <body>
@@ -561,6 +565,12 @@
         </div>
       </div>
     </div>
+
+  <!-- FOOTER -->
+  <div class="app-footer">
+    <div class="footer-brand">Smart Design · Gym Operations System</div>
+    <div class="footer-dev">Developed by <span class="blake">Blake BMC</span></div>
+  </div>
 
   </div>
 </div>
